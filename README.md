@@ -1,8 +1,8 @@
 <h3>How to create plots using this repository</h3>
 <p>The command to run code from this repository is:</p>
-<code>python3 spectral_types_plot.py</code>
+`python3 spectral_types_plot.py`
 <p>The following command line options are available:</p>
-<code>-h, --help            show this help message and exit
+```-h, --help            show this help message and exit
   --lang LANG           add language code
   --plot_dir PLOT_DIR   add directory for output plots. Default is plots directory in this repository.
   --translations_file TRANSLATIONS_FILE
@@ -12,9 +12,9 @@
                         svg, svgz, tif, tiff. Default is png.
   --translate_filenames TRANSLATE_FILENAMES
                         If True output filenames will be in requested language. If False output filenames will be in
-                        English. Default is False</code>
+                        English. Default is False```
 <p>Example usage, for British English, using untranslated filenames, the default translation file, pdf output format and output directory "/home/user/plots/", one would use the command:</p>
-<code>python3 spectral_types_plot.py --lang=en-gb --output_format=pdf --plot_dir=/home/user/plots/ </code>
+```python3 spectral_types_plot.py --lang=en-gb --output_format=pdf --plot_dir=/home/user/plots/ ```
 <p>The code creates one plot for each of the seven spectral types (showing both a line of wavelength vs flux and a band plot showing light and dark patches on the spectrum) and two comparison plots showing all seven spectra (one with a line plot, one with a band plot).</p>
 <hr/>
 <h3>Credits</h3>
