@@ -15,19 +15,38 @@ import matplotlib as mpl
 from matplotlib import cm
 from pathlib import Path
 #from translations import translations_dicts
-import sys
+import argparse
 
 
-translations_path = Path(__file__).parent / "./translations.json"
+class SpectralLineSet:
+  def __init__(self, name,lines,linestyle):
+    self.name = name
+    self.lines=lines #each line value can be either a single line value or two values for a band
+    self.linestyle=linestyle
+
+#Begin argument parsing
+parser = argparse.ArgumentParser(description='Make spectrum plots of stars')
+
+parser.add_argument('--lang', help='add language code')
+parser.add_argument('--plot_dir', help='add directory for output plots')
+parser.add_argument('--translations_file', help='add the JSON file containing translations')
+
+args = parser.parse_args()
+
+if not args.translations_file:
+    translations_path = Path(__file__).parent / "./translations.json"
+else:
+    translations_path = args.translations_file
+    
 translations_file = open(translations_path)
 translations_dicts = json.load(translations_file)
 translations_file.close()
 
-if len(sys.argv)<2:
+if not args.lang:
     need_language=True
 else:
-    if sys.argv[1] in translations_dicts.keys():
-        language_code=sys.argv[1]
+    if args.lang in translations_dicts.keys():
+        language_code=args.lang
         need_language=False
     else:
         need_language=True
@@ -41,9 +60,14 @@ while need_language:
     language_code=input(prompt_string)
     if language_code in  translations_dicts.keys():
         need_language=False
-outfile_base = Path(__file__).parent / "./plots/"
+
+if not args.plot_dir:
+    outfile_base = Path(__file__).parent / "./plots/"
+else:
+    outfile_base = args.plot_dir
 data_file_path = Path(__file__).parent / "./data/mastar_example_spectral_types.fits"
-#print(data_file_path)
+#end argument parsing
+
 
 lambda_min=365
 lambda_max=900
@@ -56,11 +80,6 @@ bounds_box_bands_offset=0.13
 text_list=translations_dicts['en_gb']
 spectral_name_base='title'
 spectral_title_base='spectrum_title'
-class SpectralLineSet:
-  def __init__(self, name,lines,linestyle):
-    self.name = name
-    self.lines=lines #each line value can be either a single line value or two values for a band
-    self.linestyle=linestyle
 
 all_balmer_lines=SpectralLineSet(text_list['balmer_text'],[656.279,486.135,434.0472,410.1734,397.0075,388.9064,383.5397],'dashed')
 some_balmer_lines=SpectralLineSet(text_list['balmer_text'],[656.279,486.135,434.0472,410.1734],'dashed')
