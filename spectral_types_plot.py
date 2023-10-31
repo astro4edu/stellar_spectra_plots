@@ -117,7 +117,8 @@ data_table=mastarall[1].data
 image_list=[]
 x_list=[]
 y_list=[]
-for index, row in enumerate(data_table):
+for row in data_table:
+    index=row['spectrum_selection'] #0=O, 1=B, 2=A, 3=F, 4=G, 5=K, 6=M
     x_tmp=0.1*row['WAVE']
     y_tmp=row['FLUX']
     mask_tmp=row['MASK']
@@ -323,7 +324,6 @@ for ind in range(0,len(y_list)):
 
 ax.set_title(text_list['bands_title'],fontsize=30,pad=10)
 ax.yaxis.set_ticklabels([])
-#ax.legend(loc=row['legend_location'],title=text_list['spectral_features_title'])
 ax.plot(x_max,0, '>k',markersize=10, clip_on=False)
 ax.plot(x_min, 1.01*y_max, '^k',markersize=10, clip_on=False)
 ax.set_xlabel(text_list['xaxis_text'],fontsize=20)
