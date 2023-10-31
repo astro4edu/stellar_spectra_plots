@@ -13,6 +13,8 @@
   --translate_filenames TRANSLATE_FILENAMES
                         If True output filenames will be in requested language. If False output filenames will be in
                         English. Default is False</code>
+<p>Example usage, for British English, using untranslated filenames, the default translation file, pdf output format and output directory "/home/user/plots/"</p>
+<code>python3 spectral_types_plot.py --lang=en-gb --output_format=pdf --plot_dir=/home/user/plots/ code>
 <hr/>
 <h3>Credits</h3>
 <p>Please credit all plots created by this package to IAU OAE/SDSS/Niall Deacon</p>
