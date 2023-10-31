@@ -26,9 +26,11 @@
         "spectrum_title6":"M-type star",
         "bands_title":"Stellar Spectra",
         "lambda_lower":"365 nm",
-        "lambda_upper":"900 nm"
+        "lambda_upper":"900 nm",
+	"bands_filename":"spectra bands",
+	"lines_filename":"spectra lines"
         },
-    "en_gb":{
+    "en-gb":{
         "xaxis_text":"Wavelength (nanometres)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
@@ -55,7 +57,9 @@
         "spectrum_title6":"M-type star",
         "bands_title":"Stellar Spectra",
         "lambda_lower":"365 nm",
-        "lambda_upper":"900 nm"
+        "lambda_upper":"900 nm",
+	"bands_filename":"spectra bands",
+	"lines_filename":"spectra lines"
         },
     "xx":{
         "xaxis_text":"Wavelength (nanometers)",
@@ -84,6 +88,8 @@
         "spectrum_title6":"M-type star",
         "bands_title":"Stellar Spectra",
         "lambda_lower":"365 nm",
-        "lambda_upper":"900 nm"
+        "lambda_upper":"900 nm",
+	"bands_filename":"spectra bands",
+	"lines_filename":"spectra lines"
         }
     }

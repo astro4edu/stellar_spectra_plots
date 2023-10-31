@@ -14,6 +14,8 @@ import matplotlib as mpl
 
 from matplotlib import cm
 from pathlib import Path
+from slugify import slugify
+
 #from translations import translations_dicts
 import argparse
 
@@ -30,6 +32,8 @@ parser = argparse.ArgumentParser(description='Make spectrum plots of stars')
 parser.add_argument('--lang', help='add language code')
 parser.add_argument('--plot_dir', help='add directory for output plots')
 parser.add_argument('--translations_file', help='add the JSON file containing translations')
+parser.add_argument('--output_format', help='add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff',default='png')
+parser.add_argument('--translate_filenames', help='If True output filenames will be in requested language. If False output filenames will be in English',default=False)
 
 args = parser.parse_args()
 
@@ -66,6 +70,11 @@ if not args.plot_dir:
 else:
     outfile_base = args.plot_dir
 data_file_path = Path(__file__).parent / "./data/mastar_example_spectral_types.fits"
+
+
+text_list=translations_dicts[language_code]
+text_list_en=translations_dicts['en']
+
 #end argument parsing
 
 
@@ -76,8 +85,6 @@ lambda_blue=400
 bounds_box=[0.1,0.9,0.1,0.9]
 bounds_box_bands=[0.3,0.9,0.1,0.9]
 bounds_box_bands_offset=0.13
-
-text_list=translations_dicts['en_gb']
 spectral_name_base='title'
 spectral_title_base='spectrum_title'
 
@@ -168,7 +175,7 @@ for index, row in enumerate(data_table):
         tmp_list1[0]=255*tmp_list[0]
         tmp_list1[1]=255*tmp_list[1]
         tmp_list1[2]=255*tmp_list[2]
-        tmp_list1[3]=255*y[index_tmp]/np.median(y)
+        tmp_list1[3]=255*y[index_tmp]/y.max()
         tmp_spec1.append(tmp_list1)
         tmp_spec2.append(tmp_list2)
 
@@ -255,7 +262,11 @@ for index, row in enumerate(data_table):
     ax[1].legend(loc=row['legend_location'],title=text_list['spectral_features_title'])
     ax[1].plot(x.max(),0, '>k',markersize=10, clip_on=False)
     ax[1].plot(x.min(), 1.1*y.max(), '^k',markersize=10, clip_on=False)
-    plt.savefig(outfile_base.joinpath(text_list[spectral_name_base+str(index)].replace(' ','_')+'_spectrum_'+language_code+'.png'))
+    if args.translate_filenames:
+        filename_tmp=slugify(text_list[spectral_name_base+str(index)])+'_'+language_code
+    else:
+        filename_tmp=slugify(text_list_en[spectral_name_base+str(index)])+'_'+language_code
+    plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
     plt.close()
     
     plt.figure()
@@ -270,8 +281,15 @@ for index,image_tuple in enumerate(image_list):
     ax_tmp[index,0].text(0.5,0.5,text_list[spectral_title_base+str(index)],ha='center',va='center',fontsize=20)
     ax_tmp[index,0].axis('off')
     ax_tmp[index,1].axis('off')
-    
-plt.savefig(outfile_base.joinpath('spectra_bands_'+language_code+'.png'))
+
+
+
+if args.translate_filenames:
+    filename_tmp=slugify(text_list['bands_filename'])+'_'+language_code
+else:
+    filename_tmp=slugify(text_list_en['bands_filename'])+'_'+language_code
+
+plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
 plt.figure()
 plt.rcParams['figure.figsize']= 15,8
 plt.rcParams.update({'font.size': 12})
@@ -317,4 +335,13 @@ ax.set_xlabel(text_list['xaxis_text'],fontsize=20)
 ax.set_ylabel(text_list['yaxis_text'],fontsize=20)
 ax.set_xlim(x_min,x_max)
 ax.set_ylim(0.0, 1.01*y_max)
-plt.savefig(outfile_base.joinpath('spectra_plots_'+language_code+'.png'))
+
+
+
+if args.translate_filenames:
+    filename_tmp=slugify(text_list['lines_filename'])+'_'+language_code
+else:
+    filename_tmp=slugify(text_list_en['lines_filename'])+'_'+language_code
+    
+
+plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
