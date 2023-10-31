@@ -40,7 +40,7 @@ args = parser.parse_args()
 if not args.translations_file:
     translations_path = Path(__file__).parent / "./translations.json"
 else:
-    translations_path = args.translations_file
+    translations_path = Path(args.translations_file)
     
 translations_file = open(translations_path)
 translations_dicts = json.load(translations_file)
@@ -68,7 +68,7 @@ while need_language:
 if not args.plot_dir:
     outfile_base = Path(__file__).parent / "./plots/"
 else:
-    outfile_base = args.plot_dir
+    outfile_base = Path(args.plot_dir)
 data_file_path = Path(__file__).parent / "./data/mastar_example_spectral_types.fits"
 
 
