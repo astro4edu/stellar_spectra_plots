@@ -13,7 +13,7 @@
   --translate_filenames TRANSLATE_FILENAMES
                         If True output filenames will be in requested language. If False output filenames will be in
                         English. Default is False</code>
-<p>Example usage, for British English, using untranslated filenames, the default translation file, pdf output format and output directory "/home/user/plots/"</p>
+<p>Example usage, for British English, using untranslated filenames, the default translation file, pdf output format and output directory "/home/user/plots/", one would use the command:</p>
 <code>python3 spectral_types_plot.py --lang=en-gb --output_format=pdf --plot_dir=/home/user/plots/ </code>
 <p>The package creates one plot for each of the seven spectral types (showing both a line of wavelength vs flux and a band plot showing light and dark patches on the spectrum) and two comparison plots showing all seven spectra (one with a line plot, one with a band plot).</p>
 <hr/>
