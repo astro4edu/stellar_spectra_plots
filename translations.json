@@ -1,5 +1,6 @@
 {
     "en":{
+	"translation_approval_level":"N",
         "xaxis_text":"Wavelength (nm)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
@@ -31,6 +32,7 @@
 	"lines_filename":"spectra lines"
         },
     "en-gb":{
+	"translation_approval_level":"N",
         "xaxis_text":"Wavelength (nanometres)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
@@ -62,6 +64,7 @@
 	"lines_filename":"spectra lines"
         },
     "xx":{
+	"translation_approval_level":"N",
         "xaxis_text":"Wavelength (nanometers)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
