@@ -1,6 +1,7 @@
 {
     "en":{
 	"translation_approval_level":"N",
+	"Translation Credit":null,
         "xaxis_text":"Wavelength (nm)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
@@ -33,6 +34,7 @@
         },
     "en-gb":{
 	"translation_approval_level":"N",
+	"Translation Credit":null,
         "xaxis_text":"Wavelength (nanometres)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
@@ -65,6 +67,7 @@
         },
     "xx":{
 	"translation_approval_level":"N",
+	"Translation Credit":null,
         "xaxis_text":"Wavelength (nanometers)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
