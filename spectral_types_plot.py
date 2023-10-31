@@ -30,10 +30,10 @@ class SpectralLineSet:
 parser = argparse.ArgumentParser(description='Make spectrum plots of stars')
 
 parser.add_argument('--lang', help='add language code')
-parser.add_argument('--plot_dir', help='add directory for output plots')
-parser.add_argument('--translations_file', help='add the JSON file containing translations')
-parser.add_argument('--output_format', help='add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff',default='png')
-parser.add_argument('--translate_filenames', help='If True output filenames will be in requested language. If False output filenames will be in English',default=False)
+parser.add_argument('--plot_dir', help='add directory for output plots. Default is plots directory in this package.')
+parser.add_argument('--translations_file', help='add the JSON file containing translations. Default is translations.json in this package.')
+parser.add_argument('--output_format', help='add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff. Default is png.',default='png')
+parser.add_argument('--translate_filenames', help='If True output filenames will be in requested language. If False output filenames will be in English. Default is False',default=False)
 
 args = parser.parse_args()
 
