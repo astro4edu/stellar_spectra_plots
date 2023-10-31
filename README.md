@@ -1,3 +1,6 @@
+<h3>How to create plots using this package</h3>
+<p></p>
+<code>python3</code>
 <hr/>
 <h3>Credits</h3>
 <p>Please credit all plots created by this package to IAU OAE/SDSS/Niall Deacon</p>
