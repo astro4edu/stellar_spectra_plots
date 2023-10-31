@@ -1,1 +1,1 @@
-Nothing yet
+Brazilian Portuguese - Translator: Eduardo Penteado
