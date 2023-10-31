@@ -20,10 +20,21 @@ from slugify import slugify
 import argparse
 
 
+class MplColorHelper:
+
+  def __init__(self, cmap_name, start_val, stop_val):
+    self.cmap_name = cmap_name
+    self.cmap = plt.get_cmap(cmap_name)
+    self.norm = mpl.colors.Normalize(vmin=start_val, vmax=stop_val)
+    self.scalarMap = cm.ScalarMappable(norm=self.norm, cmap=self.cmap)
+
+  def get_rgb(self, val):
+    return self.scalarMap.to_rgba(val)
+
 class SpectralLineSet:
   def __init__(self, name,lines,linestyle):
     self.name = name
-    self.lines=lines #each line value can be either a single line value or two values for a band
+    self.lines=lines #each line value can be either a single line value or two values (min and max) for a band
     self.linestyle=linestyle
 
 #Begin argument parsing
@@ -96,22 +107,6 @@ ca_i_lines=SpectralLineSet(text_list['calcium_atoms_text'],[422.67,],(0, (3, 10,
 ca_ii_lines=SpectralLineSet(text_list['calcium_ions_text'],[393.36614,396.84673,849.8018,854.2089,866.2140],'dotted')
 na_i_lines=SpectralLineSet(text_list['sodium_atoms_text'],[588.995 ,589.592,818.33,819.4], (0, (3, 1, 1, 1)))
 tio_lines=SpectralLineSet(text_list['titanium_oxide_text'],[(617.0,629.0),(632.2,651.2),(656.9,685.2),(705.3,727),(766,786.1)], (0, (5, 1)))
-
-
-#na_i_lines=SpectralLineSet(text_list[8],[588.995 ,589.592],(0, (3, 10, 1, 10)))
-
-
-class MplColorHelper:
-
-  def __init__(self, cmap_name, start_val, stop_val):
-    self.cmap_name = cmap_name
-    self.cmap = plt.get_cmap(cmap_name)
-    self.norm = mpl.colors.Normalize(vmin=start_val, vmax=stop_val)
-    self.scalarMap = cm.ScalarMappable(norm=self.norm, cmap=self.cmap)
-
-  def get_rgb(self, val):
-    return self.scalarMap.to_rgba(val)
-
 
 
 COL1 = MplColorHelper('rainbow',lambda_blue,lambda_red)
