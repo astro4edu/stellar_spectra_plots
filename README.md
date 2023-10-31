@@ -4,15 +4,15 @@
 <p>The following command line options are available:</p>
 <code>-h, --help            show this help message and exit
   --lang LANG           add language code
-  --plot_dir PLOT_DIR   add directory for output plots
+  --plot_dir PLOT_DIR   add directory for output plots. Default is plots directory in this package.
   --translations_file TRANSLATIONS_FILE
-                        add the JSON file containing translations
+                        add your own JSON file containing translations. Default is translations.json in this package.
   --output_format OUTPUT_FORMAT
                         add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba,
-                        svg, svgz, tif, tiff
+                        svg, svgz, tif, tiff. Default is png.
   --translate_filenames TRANSLATE_FILENAMES
                         If True output filenames will be in requested language. If False output filenames will be in
-                        English</code>
+                        English. Default is False</code>
 <hr/>
 <h3>Credits</h3>
 <p>Please credit all plots created by this package to IAU OAE/SDSS/Niall Deacon</p>
