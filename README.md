@@ -1,6 +1,18 @@
 <h3>How to create plots using this package</h3>
-<p></p>
-<code>python3</code>
+<p>The command to run code from this package is:</p>
+<code>python3 spectral_types_plot.py</code>
+<p>The following command line options are available:</p>
+<code>-h, --help            show this help message and exit
+  --lang LANG           add language code
+  --plot_dir PLOT_DIR   add directory for output plots
+  --translations_file TRANSLATIONS_FILE
+                        add the JSON file containing translations
+  --output_format OUTPUT_FORMAT
+                        add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba,
+                        svg, svgz, tif, tiff
+  --translate_filenames TRANSLATE_FILENAMES
+                        If True output filenames will be in requested language. If False output filenames will be in
+                        English</code>
 <hr/>
 <h3>Credits</h3>
 <p>Please credit all plots created by this package to IAU OAE/SDSS/Niall Deacon</p>
