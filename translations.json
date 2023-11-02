@@ -1,7 +1,7 @@
 {
   "en": {
     "translation_approval_level": "N",
-    "Translation Credit": "wibble",
+    "Translation Credit": "wibble1",
     "xaxis_text": "Wavelength (nm)",
     "yaxis_text": "Flux",
     "spectral_features_title": "Important spectral features",
@@ -133,7 +133,7 @@
   },
   "yy": {
     "translation_approval_level": "N",
-    "Translation Credit": "wibble",
+    "Translation Credit": "wibble1",
     "xaxis_text": "Wavelength (nm)",
     "yaxis_text": "Flux",
     "spectral_features_title": "Important spectral features",
