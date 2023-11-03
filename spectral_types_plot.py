@@ -91,8 +91,8 @@ text_list_en=translations_dicts['en']
 
 lambda_min=365
 lambda_max=900
-lambda_red=700
-lambda_blue=400
+lambda_red=650
+lambda_blue=450
 bounds_box=[0.1,0.9,0.1,0.9]
 bounds_box_bands=[0.3,0.9,0.1,0.9]
 bounds_box_bands_offset=0.13
@@ -118,7 +118,7 @@ image_list=[]
 x_list=[]
 y_list=[]
 for row in data_table:
-    index=row['spectrum_selection'] #0=O, 1=B, 2=A, 3=F, 4=G, 5=K, 6=M
+    index=row['spectrum_selection'] #0=O, 1=B, 2=A, 3=F, 4=G, 5=K, 6
     x_tmp=0.1*row['WAVE']
     y_tmp=row['FLUX']
     mask_tmp=row['MASK']
