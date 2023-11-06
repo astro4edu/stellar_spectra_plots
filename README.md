@@ -1,7 +1,6 @@
 ## What this repository does	
 This repository creates a series of plots of stellar spectra in multiple languages. 
 
-<<<<<<< HEAD
 =======
 ## How to create plots using this repository
 The command to run code from this repository is:
