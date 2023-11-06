@@ -262,6 +262,7 @@ for row in data_table:
         filename_tmp=slugify(text_list[spectral_name_base+str(index)])+'_'+language_code
     else:
         filename_tmp=slugify(text_list_en[spectral_name_base+str(index)])+'_'+language_code
+    print("Saving: ",text_list_en[spectral_name_base+str(index)]+'\nTo:'+filename_tmp+'.'+str.lower(args.output_format))
     plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
     plt.close()
     
@@ -285,6 +286,7 @@ if args.translate_filenames:
 else:
     filename_tmp=slugify(text_list_en['bands_filename'])+'_'+language_code
 
+print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['bands_filename']+'\nTo:'+filename_tmp+'.'+str.lower(args.output_format))
 plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
 plt.figure()
 plt.rcParams['figure.figsize']= 15,8
@@ -338,5 +340,5 @@ if args.translate_filenames:
 else:
     filename_tmp=slugify(text_list_en['lines_filename'])+'_'+language_code
     
-
+print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['lines_filename']+'\nTo:'+filename_tmp+'.'+str.lower(args.output_format))
 plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
