@@ -29,8 +29,7 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 ### Translation credits
 ###Portuguese-BR
 Translator: Eduardo Penteado
-
-<!-- end-translation-credits --><!-- end-translation-credits -->## What this repository does	
+<!-- end-translation-credits --><!-- end-translation-credits --><!-- end-translation-credits -->## What this repository does	
 This repository creates a series of plots of stellar spectra in multiple languages. 
 >>>>>>> 242ba0c899e45259c646827205605491845880b9
 
