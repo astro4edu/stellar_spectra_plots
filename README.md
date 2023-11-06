@@ -30,9 +30,6 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 Translator: Eduardo Penteado
 <!-- end-translation-credits -->
 
-## What this repository does	
-This repository creates a series of plots of stellar spectra in multiple languages. 
-
 ## Adding your own translation
 You can add your own translations by downloading this repository and editing the translations.json file. Each language starts with a [language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) followed by translations of each text element. We have included a placeholder `zz` language code that you can edit (or copy and edit if you want to add more than one language). For example if you were to translate the terms into Brazilian Portuguese you would edit:
 ```
