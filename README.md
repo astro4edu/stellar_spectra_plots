@@ -1,7 +1,6 @@
 ## What this repository does	
 This repository creates a series of plots of stellar spectra in multiple languages. 
 
-=======
 ## How to create plots using this repository
 The command to run code from this repository is:
 `python3 spectral_types_plot.py`
@@ -29,7 +28,9 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 ### Translation credits
 ### Portuguese-BR
 Translator: Eduardo Penteado
-<!-- end-translation-credits -->## What this repository does	
+<!-- end-translation-credits -->
+
+## What this repository does	
 This repository creates a series of plots of stellar spectra in multiple languages. 
 
 ## Adding your own translation
