@@ -105,7 +105,7 @@ And instead have:
 ```
 
 Then just run:
-```python3 spectral_types_plot.py --lang=xx```
-With `xx` replaced by your language code.
+```python3 spectral_types_plot.py --lang=zz```
+With `zz` replaced by your language code.
 ## Important Caveats
 All of the spectra plotted have their fluxes normalised so that they all have a maximum of the same value. The line plots with multiple stars plotted together have the normalised spectra of each star offset by differing amounts for ease of comparison. The total flux emitted by a star depends on its temperature and size so while an O-type star appears faint in red light on these plots it will emit much more red light than a faint red star (red dwarf).
