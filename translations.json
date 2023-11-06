@@ -1,7 +1,7 @@
 {
   "pt-br": {
     "translation_approval_level": "N",
-    "translation_credit": "Niall Deacon, Niall Deacon, Eduardo Monfardini Penteado",
+    "translation_credit": "Niall Deacon, Eduardo Monfardini Penteado",
     "xaxis_text": "comprimento de Onda (nanômetros)",
     "yaxis_text": "fluxo",
     "spectral_features_title": "características espectrais importantes",
@@ -30,7 +30,7 @@
     "lambda_lower": "365 nm",
     "lambda_upper": "900 nm",
     "bands_filename": "bandas espectrais",
-    "lines_filename": "linhas_espectrais"
+    "lines_filename": "linhas espectrais"
   },
   "zz": {
     "translation_approval_level": "N",
