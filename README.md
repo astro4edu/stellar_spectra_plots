@@ -27,7 +27,7 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 
 ## Translation credits
 ### Portuguese-BR
-Niall Deacon, Eduardo Monfardini Penteado
+Eduardo Monfardini Penteado
 
 <!-- end-translation-credits -->
 
@@ -109,5 +109,7 @@ Then just run:
 With `zz` replaced by your language code.
 ## Important Caveats
 All of the spectra plotted have their fluxes normalised so that they all have a maximum of the same value. The line plots with multiple stars plotted together have the normalised spectra of each star offset by differing amounts for ease of comparison. The total flux emitted by a star depends on its temperature and size so while an O-type star appears faint in red light on these plots it will emit much more red light than a faint red star (red dwarf).
+
+The color representation is a linear colour spectrum from 450-650nm. Bluer than 450nm is coloured blue, even though the human eye sees very little bluer than 400nm. Redder than 650nm is coloured red even thought the human eye has very little redder than 750nm.
 
 For languages other than English, please check the translation approval level in the translations.json file. If approval level is marked as 'N' then the translation has not been reviewed, translations marked 'A' have been approved by a reviewer in our review system.
