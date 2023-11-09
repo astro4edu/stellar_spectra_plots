@@ -35,7 +35,7 @@ class SpectralLineSet:
   def __init__(self, name,lines,linestyle):
     self.name = name
     self.lines=lines #each line value can be either a single line value or two values (min and max) for a band
-    self.linestyle=linestyle
+    self.linestyle=linestyle #a tuple containing linestyle parameters
 
 #Begin argument parsing
 parser = argparse.ArgumentParser(description='Make spectrum plots of stars')
@@ -82,13 +82,14 @@ else:
     outfile_base = Path(args.plot_dir)
 data_file_path = Path(__file__).parent / "./data/mastar_example_spectral_types.fits"
 
+#end argument parsing
+#load translation file
 
 text_list=translations_dicts[language_code]
 text_list_en=translations_dicts['en']
 
-#end argument parsing
 
-
+#setup spectra plot definitions
 lambda_min=365
 lambda_max=900
 lambda_red=650
@@ -96,9 +97,12 @@ lambda_blue=450
 bounds_box=[0.1,0.9,0.1,0.9]
 bounds_box_bands=[0.3,0.9,0.1,0.9]
 bounds_box_bands_offset=0.13
+#next two lines are the start of a few different keys in the translation files
 spectral_name_base='title'
 spectral_title_base='spectrum_title'
 
+
+#define spectral lines and bands
 all_balmer_lines=SpectralLineSet(text_list['balmer_text'],[656.279,486.135,434.0472,410.1734,397.0075,388.9064,383.5397],'dashed')
 some_balmer_lines=SpectralLineSet(text_list['balmer_text'],[656.279,486.135,434.0472,410.1734],'dashed')
 he_i_lines=SpectralLineSet(text_list['helium_atoms_text'],[396.4729,402.6191,412.0,414.3,438.7929,471.3146,492.1931,501.5678,587.56148,667.81517,706.51771],'dashdot')
@@ -106,12 +110,12 @@ he_ii_lines=SpectralLineSet(text_list['helium_ions_text'],[454.1,468.6],(0, (1, 
 ca_i_lines=SpectralLineSet(text_list['calcium_atoms_text'],[422.67,],(0, (3, 10, 1, 10)))
 ca_ii_lines=SpectralLineSet(text_list['calcium_ions_text'],[393.36614,396.84673,849.8018,854.2089,866.2140],'dotted')
 na_i_lines=SpectralLineSet(text_list['sodium_atoms_text'],[588.995 ,589.592,818.33,819.4], (0, (3, 1, 1, 1)))
-tio_lines=SpectralLineSet(text_list['titanium_oxide_text'],[(617.0,629.0),(632.2,651.2),(656.9,685.2),(705.3,727),(766,786.1)], (0, (5, 1)))
+tio_lines=SpectralLineSet(text_list['titanium_oxide_text'],[(617.0,629.0),(632.2,651.2),(656.9,685.2),(705.3,727),(766,786.1)], (0, (5, 1))) #note as TiO has broad bands it is a list of tuples with min and max wavelength
 
-
+#make colour map
 COL1 = MplColorHelper('rainbow',lambda_blue,lambda_red)
 
-
+#load SDSS spectra
 mastarall = fits.open(data_file_path)
 data_table=mastarall[1].data
 image_list=[]
@@ -119,7 +123,7 @@ x_list=[]
 y_list=[]
 for row in data_table:
     index=row['spectrum_selection'] #0=O, 1=B, 2=A, 3=F, 4=G, 5=K, 6
-    x_tmp=0.1*row['WAVE']
+    x_tmp=0.1*row['WAVE'] #A->nm
     y_tmp=row['FLUX']
     mask_tmp=row['MASK']
     subset=np.where((x_tmp>lambda_min)&(x_tmp<lambda_max)&(y_tmp>0.0)&(y_tmp<6.0*np.median(y_tmp))&(mask_tmp==0))
@@ -127,6 +131,7 @@ for row in data_table:
     y=y_tmp[subset]
     x_list.append(x)
     y_list.append(y)
+    #next few lines read in columns in the data file to determine which spectral features to plot
     spectral_features_to_plot=[]
     if row['show_all_balmer_lines']:
         spectral_features_to_plot.append(all_balmer_lines)
@@ -148,46 +153,48 @@ for row in data_table:
     #spectrum = Spectrum1D(flux=y*u.Jy, spectral_axis=x*u.um)
     #g1_fit = fit_generic_continuum(spectrum)
     #y_fit = g1_fit(x*u.um)
-    
+
+    #Define a bunch of arrays for images & spectra etc
     tmp_array=[]
-    tmp_array2=[]
-    tmp_array3=[]
-    tmp_array4=[]
-    tmp_array5=[]
+    tmp_array2=[]  #this will hold a black image for the background of the spectral bands plot
     tmp_spec1=[]
-    tmp_spec2=[]
+    tmp_spec2=[]  #black images for BG
+    #step through wavelengths
     for i0 in range(lambda_min,lambda_max):
-        index_tmp = np.argmin(np.abs(np.array(x)-i0))
+        index_tmp = np.argmin(np.abs(np.array(x)-i0)) #find nearest point on the spectrum
             
         tmp_list1=[0.0,0.0,0.0,0.0]
-        tmp_list2=[0,0,0,255]                     #black image for BG                 
+        tmp_list2=[0,0,0,255]                     #black image for BG
+
+        #get the RGB(A) colours for that olour on the spectrum 
         if i0>lambda_red:
-            tmp_list=list(COL1.get_rgb(lambda_red))
+            tmp_list=list(COL1.get_rgb(lambda_red)) #if redder than lower limit of red light
             
         elif i0<lambda_blue:
-            tmp_list=list(COL1.get_rgb(lambda_blue))
+            tmp_list=list(COL1.get_rgb(lambda_blue))  #if bluer than upper limit of blue light make it blue
         else:
             tmp_list=list(COL1.get_rgb(i0))
+        #RGB values for this wavelength 
         tmp_list1[0]=255*tmp_list[0]
         tmp_list1[1]=255*tmp_list[1]
         tmp_list1[2]=255*tmp_list[2]
+        #set the alpha channel (transparency) to be the flux at this wavelength divided by the maximum flux
         tmp_list1[3]=255*y[index_tmp]/y.max()
+        #append this wavelength to the list of spectra
         tmp_spec1.append(tmp_list1)
         tmp_spec2.append(tmp_list2)
-
+    #make 300px thick spectra bands
     for i0 in range(0,300):
         tmp_array.append(tmp_spec1)
         tmp_array2.append(tmp_spec2)
 
-        
-        
-        
+    #turn arrays into images
     tmp_array1=np.array(tmp_array).astype('uint8')
     tmp_array2=np.array(tmp_array2).astype('uint8')
     img_tmp = Image.fromarray(tmp_array1, mode='RGBA')
     img_tmp2 = Image.fromarray(tmp_array2, mode='RGBA')
     image_list.append((img_tmp,img_tmp2))
-    #img_tmp.show()
+    #make the plot of the individual spectral type
     plt.rcParams['figure.figsize']= 15,8
     plt.rcParams.update({'font.size': 12})
     mpl.rcParams['axes.linewidth'] =1.0
@@ -211,10 +218,6 @@ for row in data_table:
     ax[1].set_xlabel(text_list['xaxis_text'],fontsize=20)
     ax[1].set_ylabel(text_list['yaxis_text'],fontsize=20)
     
-    #fig.colorbar(line, ax=axs)
-    
-
-    #print(x.min(),x.max())
     ax[1].set_xlim(x.min(),x.max())
     ax[1].set_ylim(0.0, 1.1*y.max())
     for spectral_feature in spectral_features_to_plot:
@@ -256,13 +259,14 @@ for row in data_table:
                 line_tmp1 = plt.Line2D((line_x,line_x),(line_y_max,line_y_min), color="k", linewidth=1,linestyle=spectral_feature.linestyle,label=spectral_feature.name)
             fig.add_artist(line_tmp1)
     ax[1].legend(loc=row['legend_location'],title=text_list['spectral_features_title'])
+    #add arrowheads to axes
     ax[1].plot(x.max(),0, '>k',markersize=10, clip_on=False)
     ax[1].plot(x.min(), 1.1*y.max(), '^k',markersize=10, clip_on=False)
     if args.translate_filenames:
         filename_tmp=slugify(text_list[spectral_name_base+str(index)])+'_'+language_code
     else:
         filename_tmp=slugify(text_list_en[spectral_name_base+str(index)])+'_'+language_code
-    print("Saving: ",text_list_en[spectral_name_base+str(index)]+'\nTo:'+filename_tmp+'.'+str.lower(args.output_format))
+    print("Saving: ",text_list_en[spectral_name_base+str(index)]+'\nTo: '+str(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format))))
     plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
     plt.close()
     
@@ -286,7 +290,7 @@ if args.translate_filenames:
 else:
     filename_tmp=slugify(text_list_en['bands_filename'])+'_'+language_code
 
-print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['bands_filename']+'\nTo:'+filename_tmp+'.'+str.lower(args.output_format))
+print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['bands_filename']+'\nTo: '+str(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format))))
 plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
 plt.figure()
 plt.rcParams['figure.figsize']= 15,8
@@ -294,6 +298,7 @@ plt.rcParams.update({'font.size': 12})
 plt.rcParams['axes.linewidth'] =1.0
 plt.rc('axes.spines', **{'bottom':True, 'left':True, 'right':False, 'top':False})
 fig, ax = plt.subplots(1)
+#there min and max values are set in the next loop to define the upper and lower limits for the plots
 y_max=0
 x_min=1e6
 x_max=0
@@ -318,6 +323,7 @@ for ind in range(0,len(y_list)):
         x_max=max(x)
     if max(y)>y_max:
         y_max=max(y)
+    #The y offsets were found by trial and error
     if ind<3:
         y_text_offset=0.3
     else:
@@ -326,6 +332,7 @@ for ind in range(0,len(y_list)):
 
 ax.set_title(text_list['bands_title'],fontsize=30,pad=10)
 ax.yaxis.set_ticklabels([])
+#add arrowheads to axes
 ax.plot(x_max,0, '>k',markersize=10, clip_on=False)
 ax.plot(x_min, 1.01*y_max, '^k',markersize=10, clip_on=False)
 ax.set_xlabel(text_list['xaxis_text'],fontsize=20)
@@ -340,5 +347,5 @@ if args.translate_filenames:
 else:
     filename_tmp=slugify(text_list_en['lines_filename'])+'_'+language_code
     
-print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['lines_filename']+'\nTo:'+filename_tmp+'.'+str.lower(args.output_format))
+print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['lines_filename']+'\nTo: '+str(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format))))
 plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
