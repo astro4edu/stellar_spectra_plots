@@ -9,7 +9,7 @@ The following command line options are available:
   --lang LANG           add language code
   --plot_dir PLOT_DIR   add directory for output plots. Default is plots directory in this repository.
   --translations_file TRANSLATIONS_FILE
-                        add your own JSON file containing translations. Default is translations.json in this package.
+                        add your own JSON file containing translations. Default is translations.json in this repository.
   --output_format OUTPUT_FORMAT
                         add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba,
                         svg, svgz, tif, tiff. Default is png.
