@@ -183,11 +183,15 @@ for row in data_table:
         #append this wavelength to the list of spectra
         tmp_spec1.append(tmp_list1)
         tmp_spec2.append(tmp_list2)
+        #this is a hack to take into account the half pixel offset between image and the graph
+        if i0!=lambda_min:
+            tmp_spec1.append(tmp_list1)
+            tmp_spec2.append(tmp_list2)
     #make 300px thick spectra bands
     for i0 in range(0,300):
         tmp_array.append(tmp_spec1)
         tmp_array2.append(tmp_spec2)
-
+    
     #turn arrays into images
     tmp_array1=np.array(tmp_array).astype('uint8')
     tmp_array2=np.array(tmp_array2).astype('uint8')
