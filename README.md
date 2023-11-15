@@ -37,6 +37,10 @@ You can add your own translations by downloading this repository and editing the
  "zz":{
 	"translation_approval_level":"N",
 	"Translation Credit":null,
+	"possible_fonts": [
+     		 "Noto Sans",
+     		 "Arial"
+		],
         "xaxis_text":"Wavelength (nanometers)",
         "yaxis_text":"Flux",
         "spectral_features_title":"Important spectral features",
@@ -73,6 +77,10 @@ And instead have:
 "pt-br": {
 	"translation_approval_level": "N",
 	"Translation Credit":"Translator: Eduardo Penteado",
+	"possible_fonts": [
+     		 "Noto Sans",
+     		 "Arial"
+		],
 	"xaxis_text": "comprimento de Onda (nanômetros)",
 	"yaxis_text": "fluxo",
 	"spectral_features_title": "características espectrais importantes",
