@@ -39,7 +39,12 @@
   "ar": {
     "translation_approval_level": "N",
     "translation_credit": "Niall Deacon",
-    "possible_fonts": "\"[\\\"Noto Sans Arabic\\\",\\\"Simplified Arabic\\\",\\\"Geezah\\\",\\\".SF Arabic\\\"]\"",
+    "possible_fonts": [
+      "Noto Sans Arabic",
+      "Simplified Arabic",
+      "Geezah",
+      ".SF Arabic"
+    ],
     "xaxis_text": "الطول الموجي (نانومتر)",
     "yaxis_text": "تدفق",
     "spectral_features_title": "ميزات طيفية مهمة",
