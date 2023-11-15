@@ -47,7 +47,6 @@ def font_loader(possible_fonts):
     packaged_font_files=glob(str(packaged_fonts_path))
     for font_file in packaged_font_files:
         font_manager.fontManager.addfont(font_file)
-        print(font_manager.fontManager.ttflist[-1])
     loaded_font_list=[f.name for f in font_manager.fontManager.ttflist]
     #loop over fonts for the required script and add any that are available to the list of fonts to pass to matplotlib
     for font in possible_fonts:
