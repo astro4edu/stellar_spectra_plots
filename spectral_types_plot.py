@@ -5,15 +5,18 @@ import json
 from astropy import units as u
 from PIL import Image
 
+import arabic_reshaper
+from bidi.algorithm import get_display
 
 from matplotlib.collections import LineCollection
 from matplotlib.colors import BoundaryNorm, ListedColormap
-
+from matplotlib import font_manager
 
 import matplotlib as mpl
 
 from matplotlib import cm
 from pathlib import Path
+from glob import glob
 from slugify import slugify
 
 #from translations import translations_dicts
@@ -37,10 +40,29 @@ class SpectralLineSet:
     self.lines=lines #each line value can be either a single line value or two values (min and max) for a band
     self.linestyle=linestyle #a tuple containing linestyle parameters
 
+def font_loader(possible_fonts):
+    usable_fonts=[]
+    #find any fonts in the font folder of package and load them
+    packaged_fonts_path = Path(__file__).parent / 'fonts/*ttf'
+    packaged_font_files=glob(str(packaged_fonts_path))
+    for font_file in packaged_font_files:
+        font_manager.fontManager.addfont(font_file)
+    loaded_font_list=[f.name for f in font_manager.fontManager.ttflist]
+    #loop over fonts for the required script and add any that are available to the list of fonts to pass to matplotlib
+    for font in possible_fonts:
+        if font in loaded_font_list:
+            usable_fonts.append(font)
+    if "Arial Unicode" in loaded_font_list:
+        usable_fonts.append("Arial Unicode") #add Arial Unicode font as backup
+    if "DejaVu Sans" in loaded_font_list:
+        usable_fonts.append("DejaVu Sans") #add default matplotlib font as backup
+    plt.rcParams['font.family']=usable_fonts #pass fonts to matplotlib
+    
 #Begin argument parsing
 parser = argparse.ArgumentParser(description='Make spectrum plots of stars')
 
 parser.add_argument('--lang', help='add language code')
+parser.add_argument('--text-direction', help='add the text direction, ltr=left to right or rtl=right to left, default is ltr')
 parser.add_argument('--plot_dir', help='add directory for output plots. Default is plots directory in this package.')
 parser.add_argument('--translations_file', help='add the JSON file containing translations. Default is translations.json in this package.')
 parser.add_argument('--output_format', help='add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff. Default is png.',default='png')
@@ -86,9 +108,17 @@ data_file_path = Path(__file__).parent / "./data/mastar_example_spectral_types.f
 #load translation file
 
 text_list=translations_dicts[language_code]
+possible_fonts=text_list['possible_fonts']
+text_list = {key:(get_display(value) if type(value)==str else value) for key, value in text_list.items()}
+
+if language_code.startswith('ar'):
+    text_list = {key:(__reshaper.reshape(value) if type(value)==str else value) for key, value in text_list.items()}
+    
 text_list_en=translations_dicts['en']
 
+font_loader(possible_fonts)
 
+        
 #setup spectra plot definitions
 lambda_min=365
 lambda_max=900
@@ -296,6 +326,7 @@ else:
 
 print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['bands_filename']+'\nTo: '+str(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format))))
 plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
+plt.close()
 plt.figure()
 plt.rcParams['figure.figsize']= 15,8
 plt.rcParams.update({'font.size': 12})
@@ -353,3 +384,4 @@ else:
     
 print("Saving: ",text_list_en['bands_title']+' - '+text_list_en['lines_filename']+'\nTo: '+str(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format))))
 plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
+plt.close()
