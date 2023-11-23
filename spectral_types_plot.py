@@ -135,11 +135,13 @@ spectral_title_base='spectrum_title'
 #define spectral lines and bands
 all_balmer_lines=SpectralLineSet(text_list['balmer_text'],[656.279,486.135,434.0472,410.1734,397.0075,388.9064,383.5397],'dashed')
 some_balmer_lines=SpectralLineSet(text_list['balmer_text'],[656.279,486.135,434.0472,410.1734],'dashed')
-he_i_lines=SpectralLineSet(text_list['helium_atoms_text'],[396.4729,402.6191,412.0,414.3,438.7929,471.3146,492.1931,501.5678,587.56148,667.81517,706.51771],'dashdot')
-he_ii_lines=SpectralLineSet(text_list['helium_ions_text'],[454.1,468.6],(0, (1, 10)))
+he_i_lines=SpectralLineSet(text_list['helium_atoms_text'],[402.6191,414.4,438.7929,447.1,454.1,471.3146,492.1931,501.5678,587.56148,667.81517,706.51771],'dashdot')
+he_ii_lines=SpectralLineSet(text_list['helium_ions_text'],[420.0,454.1,468.6],(0, (1, 10)))
 ca_i_lines=SpectralLineSet(text_list['calcium_atoms_text'],[422.67,],(0, (3, 10, 1, 10)))
 ca_ii_lines=SpectralLineSet(text_list['calcium_ions_text'],[393.36614,396.84673,849.8018,854.2089,866.2140],'dotted')
-na_i_lines=SpectralLineSet(text_list['sodium_atoms_text'],[588.995 ,589.592,818.33,819.4], (0, (3, 1, 1, 1)))
+some_na_i_lines=SpectralLineSet(text_list['sodium_atoms_text'],[588.995 ,589.592], (0, (3, 1, 1, 1)))
+more_na_i_lines=SpectralLineSet(text_list['sodium_atoms_text'],[588.995 ,589.592,818.33,819.4], (0, (3, 1, 1, 1)))
+fe_i_lines=SpectralLineSet(text_list['iron_atoms_text'],[404.6,438.3,492.1,846.8,868.8],(0, (3, 5, 1, 5, 1, 5)))
 tio_lines=SpectralLineSet(text_list['titanium_oxide_text'],[(617.0,629.0),(632.2,651.2),(656.9,685.2),(705.3,727),(766,786.1)], (0, (5, 1))) #note as TiO has broad bands it is a list of tuples with min and max wavelength
 
 #make colour map
@@ -175,10 +177,15 @@ for row in data_table:
         spectral_features_to_plot.append(ca_i_lines)
     if row['show_ca_ii_lines']:
         spectral_features_to_plot.append(ca_ii_lines)
-    if row['show_na_i_lines']:
-        spectral_features_to_plot.append(na_i_lines)
+    if row['show_some_na_i_lines']:
+        spectral_features_to_plot.append(some_na_i_lines)
+    if row['show_more_na_i_lines']:
+        spectral_features_to_plot.append(more_na_i_lines)
+    if row['show_fe_i_lines']:
+        spectral_features_to_plot.append(fe_i_lines)
     if row['show_tio_lines']:
         spectral_features_to_plot.append(tio_lines)
+
     #print(min(y_tmp),max(y_tmp),np.median(y_tmp),max(y_tmp)/np.median(y_tmp))
     #spectrum = Spectrum1D(flux=y*u.Jy, spectral_axis=x*u.um)
     #g1_fit = fit_generic_continuum(spectrum)
@@ -243,7 +250,7 @@ for row in data_table:
     segments = np.concatenate([points[:-1], points[1:]], axis=1)
     
     norm =plt.Normalize(lambda_blue,lambda_red)
-    linewidths=[1.0] * len(segments)
+    linewidths=[0.5] * len(segments)
     lc = LineCollection(segments, cmap='rainbow', norm=norm,linewidths=linewidths)
     
     lc.set_array(x)
@@ -274,9 +281,9 @@ for row in data_table:
                     line_middle_x.append(line_x)
                     line_y_min=bounds_box[2]+(bounds_box[3]-bounds_box[2]-0.2)*(y_average/(1.1*max(y_tmp)))+additional_offset
                     line_y_max=0.7
-                    line_tmp1 = plt.Line2D((line_x,line_x),(line_y_max,line_y_min), color="k", linewidth=1,linestyle=spectral_feature.linestyle,label=spectral_feature.name)
+                    line_tmp1 = plt.Line2D((line_x,line_x),(line_y_max,line_y_min), color="k", linewidth=2,linestyle=spectral_feature.linestyle,label=spectral_feature.name)
                     fig.add_artist(line_tmp1)
-                line_tmp1 = plt.Line2D((line_middle_x[0],line_middle_x[1]),(line_y_max,line_y_max), color="k", linewidth=1,linestyle=spectral_feature.linestyle,label=spectral_feature.name) 
+                line_tmp1 = plt.Line2D((line_middle_x[0],line_middle_x[1]),(line_y_max,line_y_max), color="k", linewidth=2,linestyle=spectral_feature.linestyle,label=spectral_feature.name) 
                 fig.add_artist(line_tmp1) 
             else:
                 index_tmp = np.argmin(np.abs(np.array(x_tmp)-line_tmp))
@@ -290,9 +297,11 @@ for row in data_table:
                 line_x=(bounds_box[1]-1.24*bounds_box[0])*(line_tmp-lambda_min)/(lambda_max-lambda_min)+1.25*bounds_box[0]
                 line_y_min=bounds_box[2]+(bounds_box[3]-bounds_box[2]-0.2)*(y_average/(1.1*max(y_tmp)))+additional_offset
                 line_y_max=0.7
-                line_tmp1 = plt.Line2D((line_x,line_x),(line_y_max,line_y_min), color="k", linewidth=1,linestyle=spectral_feature.linestyle,label=spectral_feature.name)
+                line_tmp1 = plt.Line2D((line_x,line_x),(line_y_max,line_y_min), color="k", linewidth=2,linestyle=spectral_feature.linestyle,label=spectral_feature.name)
             fig.add_artist(line_tmp1)
-    ax[1].legend(loc=row['legend_location'],title=text_list['spectral_features_title'])
+    legend_tmp=ax[1].legend(loc=row['legend_location'],title=text_list['spectral_features_title'], handlelength=5)
+    leg_lines = legend_tmp.get_lines()
+    plt.setp(leg_lines, linewidth=2)
     #add arrowheads to axes
     ax[1].plot(x.max(),0, '>k',markersize=10, clip_on=False)
     ax[1].plot(x.min(), 1.1*y.max(), '^k',markersize=10, clip_on=False)
@@ -350,7 +359,7 @@ for ind in range(0,len(y_list)):
     lc = LineCollection(segments, cmap='rainbow', norm=norm,linewidths=linewidths)
     
     lc.set_array(x)
-    lc.set_linewidth(3)
+    lc.set_linewidth(1)
     line = ax.add_collection(lc)
     if min(x)<x_min:
         x_min=min(x)
