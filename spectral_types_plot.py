@@ -1,20 +1,10 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import astropy.io.fits as fits
-import json
 from astropy import units as u
 from PIL import Image
-
 import arabic_reshaper
 from bidi.algorithm import get_display
-
-from matplotlib.collections import LineCollection
-from matplotlib.colors import BoundaryNorm, ListedColormap
-from matplotlib import font_manager
-
-import matplotlib as mpl
-
-from matplotlib import cm
+import json
 from pathlib import Path
 from glob import glob
 from slugify import slugify
@@ -74,7 +64,6 @@ if not args.translations_file:
     translations_path = Path(__file__).parent / "./translations.json"
 else:
     translations_path = Path(args.translations_file)
-    
 translations_file = open(translations_path)
 translations_dicts = json.load(translations_file)
 translations_file.close()
@@ -106,13 +95,25 @@ data_file_path = Path(__file__).parent / "./data/mastar_example_spectral_types.f
 
 #end argument parsing
 #load translation file
-
 text_list=translations_dicts[language_code]
 possible_fonts=text_list['possible_fonts']
 text_list = {key:(get_display(value) if type(value)==str else value) for key, value in text_list.items()}
 
 if language_code.startswith('ar'):
     text_list = {key:(arabic_reshaper.reshape(value) if type(value)==str else value) for key, value in text_list.items()}
+
+
+#check is cairo is required and load matplotlib
+if text_list["matplotlib_cairo"]:
+    import mplcairo
+import matplotlib as mpl
+if text_list["matplotlib_cairo"]:
+    mpl.use("module://mplcairo.qt")
+import matplotlib.pyplot as plt
+from matplotlib.collections import LineCollection
+from matplotlib.colors import BoundaryNorm, ListedColormap
+from matplotlib import font_manager
+from matplotlib import cm
     
 text_list_en=translations_dicts['en']
 
@@ -130,7 +131,6 @@ bounds_box_bands_offset=0.13
 #next two lines are the start of a few different keys in the translation files
 spectral_name_base='title'
 spectral_title_base='spectrum_title'
-
 
 #define spectral lines and bands
 all_balmer_lines=SpectralLineSet(text_list['balmer_text'],[656.279,486.135,434.0472,410.1734,397.0075,388.9064,383.5397],'dashed')
@@ -311,6 +311,7 @@ for row in data_table:
         filename_tmp=slugify(text_list_en[spectral_name_base+str(index)])+'_'+language_code
     print("Saving: ",text_list_en[spectral_name_base+str(index)]+'\nTo: '+str(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format))))
     plt.savefig(outfile_base.joinpath(filename_tmp+'.'+str.lower(args.output_format)))
+    
     plt.close()
     
     plt.figure()
