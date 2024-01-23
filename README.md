@@ -28,9 +28,6 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 ## Translation credits
 ### Portuguese BR
 Eduardo Monfardini Penteado
-### Scots
-Niall Deacon
-
 <!-- end-translation-credits -->
 
 ## Adding your own translation
