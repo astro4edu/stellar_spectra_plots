@@ -1,7 +1,7 @@
 {
   "en": {
     "translation_approval_level": "N",
-    "translation_credit": null,
+    "translation_credit": "Niall Deacon",
     "matplotlib_cairo": false,
     "possible_fonts": [
       "Noto Sans",
@@ -75,9 +75,47 @@
     "bands_filename": "bandas espectrais",
     "lines_filename": "linhas espectrais"
   },
+  "sco": {
+    "translation_approval_level": "N",
+    "translation_credit": "Niall Deacon",
+    "matplotlib_cairo": false,
+    "possible_fonts": [
+      "Noto Sans",
+      "Arial"
+    ],
+    "xaxis_text": "",
+    "yaxis_text": "",
+    "spectral_features_title": "",
+    "balmer_text": "",
+    "helium_atoms_text": "",
+    "helium_ions_text": "",
+    "calcium_atoms_text": "",
+    "calcium_ions_text": "",
+    "sodium_atoms_text": "",
+    "titanium_oxide_text": "",
+    "title0": "",
+    "title1": "",
+    "title2": "",
+    "title3": "",
+    "title4": "",
+    "title5": "",
+    "title6": "",
+    "spectrum_title0": "",
+    "spectrum_title1": "",
+    "spectrum_title2": "",
+    "spectrum_title3": "",
+    "spectrum_title4": "",
+    "spectrum_title5": "",
+    "spectrum_title6": "",
+    "bands_title": "",
+    "lambda_lower": "",
+    "lambda_upper": "",
+    "bands_filename": "",
+    "lines_filename": ""
+  },
   "zz": {
     "translation_approval_level": "N",
-    "translation_credit": null,
+    "translation_credit": "Niall Deacon",
     "matplotlib_cairo": false,
     "possible_fonts": [
       "Noto Sans",
