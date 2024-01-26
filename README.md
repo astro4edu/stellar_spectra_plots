@@ -119,8 +119,10 @@ Then just run:
 With `zz` replaced by your language code.
 <!-- start-diagram-links -->
 
-## Diagram Links
-
+## Diagrams Links
+ <ul>
+<li><a href="http://astro4edu.org//resources/diagram/NE74hZ95Ee34/">Spectrum of an O-type star</a></li>
+</ul>
 
 <!-- end-diagram-links -->
 
