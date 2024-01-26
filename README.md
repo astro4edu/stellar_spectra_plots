@@ -17,8 +17,8 @@ The following command line options are available:
                         If True output filenames will be in requested language. If False output filenames will be in
                         English. Default is False
 ```
-Example usage, for British English, using untranslated filenames, the default translation file, pdf output format and output directory "/home/user/plots/", one would use the command:
-```python3 spectral_types_plot.py --lang=en-gb --output_format=pdf --plot_dir=/home/user/plots/ ```
+Example usage, for English, using untranslated filenames, the default translation file, pdf output format and output directory "/home/user/plots/", one would use the command:
+```python3 spectral_types_plot.py --lang=en --output_format=pdf --plot_dir=/home/user/plots/ ```
 The code creates one plot for each of the seven spectral types (showing both a line of wavelength vs flux and a band plot showing light and dark patches on the spectrum) and two comparison plots showing all seven spectra (one with a line plot, one with a band plot).
 
 ## License
