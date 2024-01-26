@@ -97,11 +97,14 @@ data_file_path = Path(__file__).parent / "./data/mastar_example_spectral_types.f
 #load translation file
 text_list=translations_dicts[language_code]
 possible_fonts=text_list['possible_fonts']
-text_list = {key:(get_display(value) if type(value)==str else value) for key, value in text_list.items()}
 
+
+#important that arabic reshaper comes before bidi get_display
 if language_code.startswith('ar'):
     text_list = {key:(arabic_reshaper.reshape(value) if type(value)==str else value) for key, value in text_list.items()}
 
+
+text_list = {key:(get_display(value) if type(value)==str else value) for key, value in text_list.items()}
 
 #check is cairo is required and load matplotlib
 if text_list["matplotlib_cairo"]:
@@ -116,7 +119,6 @@ from matplotlib import font_manager
 from matplotlib import cm
     
 text_list_en=translations_dicts['en']
-
 font_loader(possible_fonts)
 
         
