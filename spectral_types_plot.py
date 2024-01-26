@@ -54,14 +54,14 @@ parser = argparse.ArgumentParser(description='Make spectrum plots of stars')
 parser.add_argument('--lang', help='add language code')
 parser.add_argument('--text-direction', help='add the text direction, ltr=left to right or rtl=right to left, default is ltr')
 parser.add_argument('--plot_dir', help='add directory for output plots. Default is plots directory in this package.')
-parser.add_argument('--translations_file', help='add the JSON file containing translations. Default is translations.json in this package.')
+parser.add_argument('--translations_file', help='add the JSON file containing translations. Default is translations/translations.json in this package.')
 parser.add_argument('--output_format', help='add the output format for the plots. options: eps, jpg, jpeg, pdf, pgf, png, ps, raw, rgba, svg, svgz, tif, tiff. Default is png.',default='png')
 parser.add_argument('--translate_filenames', help='If True output filenames will be in requested language. If False output filenames will be in English. Default is False',default=False)
 
 args = parser.parse_args()
 
 if not args.translations_file:
-    translations_path = Path(__file__).parent / "./translations.json"
+    translations_path = Path(__file__).parent / "./translations/translations.json"
 else:
     translations_path = Path(args.translations_file)
 translations_file = open(translations_path)
