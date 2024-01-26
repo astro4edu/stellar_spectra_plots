@@ -26,7 +26,7 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 <!-- start-translation-credits -->
 
 ## Translation credits
-### Portuguese-BR
+### Portuguese BR
 Eduardo Monfardini Penteado
 
 <!-- end-translation-credits -->
@@ -37,6 +37,7 @@ You can add your own translations by downloading this repository and editing the
  "zz":{
 	"translation_approval_level":"N",
 	"Translation Credit":null,
+	"matplotlib_cairo": false,
 	"possible_fonts": [
      		 "Noto Sans",
      		 "Arial"
@@ -77,6 +78,7 @@ And instead have:
 "pt-br": {
 	"translation_approval_level": "N",
 	"Translation Credit":"Translator: Eduardo Penteado",
+	"matplotlib_cairo": false,
 	"possible_fonts": [
      		 "Noto Sans",
      		 "Arial"
@@ -115,9 +117,18 @@ And instead have:
 Then just run:
 ```python3 spectral_types_plot.py --lang=zz```
 With `zz` replaced by your language code.
+<!-- start-diagram-links -->
+
+## Diagrams Links
+ <ul>
+ Below are links to the diagrams produced by this code. You can also find the diagram captions and any translations of these captions in the links.
+<li><a href="http://astro4edu.org/resources/diagram/NE74hZ95Ee34/">Spectrum of an O-type star</a></li>
+</ul>
+
+<!-- end-diagram-links -->
 
 ## Fonts
-The built-in fonts for matplotlib often struggle with non-Latin characters. The code is set up to try to load commonly used fonts for the writing system it is producing the plots for. If you want to load a font that is already installed on your system then you can tell the code to use that font by adding it to the start of the list in the `possible_fonts` list in `translations.json`. If you are struggling to get a particular writing system to work with this code then you can download the font you want to use and copy the `.ttf` file to the `fonts` folder of this repository. The code will then automatically load that font. The Google <a href="https://fonts.google.com/noto">Noto Fonts</a> project provides fonts in a wide range of writing systems.
+The built-in fonts for matplotlib often struggle with non-Latin characters. The code is set up to try to load commonly used fonts for the writing system it is producing the plots for. If you want to load a font that is already installed on your system then you can tell the code to use that font by adding it to the start of the list in the `possible_fonts` list in `translations.json`. If you are struggling to get a particular writing system to work with this code then you can download the font you want to use and copy the `.ttf` file to the `fonts` folder of this repository. The code will then automatically load that font. The Google <a href="https://fonts.google.com/noto">Noto Fonts</a> project provides fonts in a wide range of writing systems. For some writing systems (mostly scripts used in South Asia such as Devanagari or Bengali) we recommend you use the <a href="https://pypi.org/project/mplcairo/">mplcairo matplotlib backend</a>. Once you have installed mplcairo, change "matplotlib_cairo" from false to true (lowercase, no quotemarks).
 
 ## Important Caveats
 All of the spectra plotted have their fluxes normalised so that they all have a maximum of the same value. The line plots with multiple stars plotted together have the normalised spectra of each star offset by differing amounts for ease of comparison. The total flux emitted by a star depends on its temperature and size so while an O-type star appears faint in red light on these plots it will emit much more red light than a faint red star (red dwarf).
