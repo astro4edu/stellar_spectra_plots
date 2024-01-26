@@ -124,8 +124,9 @@ With `zz` replaced by your language code.
 <!-- start-diagram-links -->
 
 ## Diagrams Links
- <ul>
+
  Below are links to the diagrams produced by this code. You can also find the diagram captions and any translations of these captions in the links.
+  <ul>
 <li><a href="http://astro4edu.org/resources/diagram/NE74hZ95Ee34/">Spectrum of an O-type star</a></li>
 </ul>
 
