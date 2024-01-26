@@ -28,8 +28,6 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 ## Translation credits
 ### Portuguese BR
 Eduardo Monfardini Penteado
-### Scots
-Niall Deacon
 
 <!-- end-translation-credits -->
 
@@ -119,6 +117,12 @@ And instead have:
 Then just run:
 ```python3 spectral_types_plot.py --lang=zz```
 With `zz` replaced by your language code.
+<!-- start-diagram-links -->
+
+## Diagram Links
+
+
+<!-- diagram-links -->
 
 ## Fonts
 The built-in fonts for matplotlib often struggle with non-Latin characters. The code is set up to try to load commonly used fonts for the writing system it is producing the plots for. If you want to load a font that is already installed on your system then you can tell the code to use that font by adding it to the start of the list in the `possible_fonts` list in `translations.json`. If you are struggling to get a particular writing system to work with this code then you can download the font you want to use and copy the `.ttf` file to the `fonts` folder of this repository. The code will then automatically load that font. The Google <a href="https://fonts.google.com/noto">Noto Fonts</a> project provides fonts in a wide range of writing systems. For some writing systems (mostly scripts used in South Asia such as Devanagari or Bengali) we recommend you use the <a href="https://pypi.org/project/mplcairo/">mplcairo matplotlib backend</a>. Once you have installed mplcairo, change "matplotlib_cairo" from false to true (lowercase, no quotemarks).
