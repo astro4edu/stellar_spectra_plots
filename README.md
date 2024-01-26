@@ -20,8 +20,12 @@ The following command line options are available:
 Example usage, for British English, using untranslated filenames, the default translation file, pdf output format and output directory "/home/user/plots/", one would use the command:
 ```python3 spectral_types_plot.py --lang=en-gb --output_format=pdf --plot_dir=/home/user/plots/ ```
 The code creates one plot for each of the seven spectral types (showing both a line of wavelength vs flux and a band plot showing light and dark patches on the spectrum) and two comparison plots showing all seven spectra (one with a line plot, one with a band plot).
+
+## License
+The code released is available under an MIT license and should be credited to IAU OAE/Niall Deacon. The plots in the plots directory and the translations in the translations directory are published under a <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC-BY-4.0 license</a>. The data in the data folder are from the Sloan Digital Sky Survey and are public domain. 
+
 ## Credits
-Please credit all plots created by this code to IAU OAE/SDSS/Niall Deacon. Some of the characteristics of the plots were inspired by the plots created by the <a href="https://www.sdss4.org/dr17/mastar/">MaStar Stellar Library</a> team.
+Please credit all plots created by this code to IAU OAE/SDSS/Niall Deacon adding credits to additional translators where appropriate. Some of the characteristics of the plots were inspired by the plots created by the <a href="https://www.sdss4.org/dr17/mastar/">MaStar Stellar Library</a> team.
 These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic data from the <a href="https://www.sdss4.org/dr17/mastar/">MaStar Stellar Library</a>. More information on the MaStar Stellar Library and SDSS can be found in Yan et al. (in prep), <a href="https://ui.adsabs.harvard.edu/abs/2019ApJ...883..175Y/abstract">Yan et al. (2019)</a> and the <a href="https://ui.adsabs.harvard.edu/abs/2022ApJS..259...35A/abstract"> Abdurro’uf et al. (2021)</a> and <a href="https://ui.adsabs.harvard.edu/abs/2017AJ....154...28B">Blanton et al. (2017)</a>.
 <!-- start-translation-credits -->
 
