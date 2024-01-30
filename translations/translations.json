@@ -1,7 +1,7 @@
 {
   "en": {
     "translation_approval_level": "N",
-    "translation_credit": null,
+    "translation_credit": "Niall Deacon",
     "matplotlib_cairo": false,
     "possible_fonts": [
       "Noto Sans",
@@ -36,6 +36,44 @@
     "lambda_upper": "900 nm",
     "bands_filename": "spectra bands",
     "lines_filename": "spectra lines"
+  },
+  "de": {
+    "translation_approval_level": "N",
+    "translation_credit": "Niall Deacon",
+    "matplotlib_cairo": false,
+    "possible_fonts": [
+      "Noto Sans",
+      "Arial"
+    ],
+    "xaxis_text": "Wellenlänge (Nanometer)",
+    "yaxis_text": "Flux",
+    "spectral_features_title": "Wichtige spektrale Merkmale",
+    "balmer_text": "Wasserstoffatome",
+    "helium_atoms_text": "Helium-Atome",
+    "helium_ions_text": "Helium-Ionen",
+    "calcium_atoms_text": "Calcium-Atome",
+    "calcium_ions_text": "Kalzium-Ionen",
+    "sodium_atoms_text": "Natrium-Atome",
+    "titanium_oxide_text": "Titanium Oxide",
+    "title0": "Spektrum eines Sterns vom Typ O",
+    "title1": "Spektrum eines Sterns vom Typ B",
+    "title2": "Spektrum eines Sterns vom Typ A",
+    "title3": "Spektrum eines Sterns vom Typ F",
+    "title4": "Spektrum eines Sterns vom Typ G",
+    "title5": "Spektrum eines Sterns vom Typ K",
+    "title6": "Spektrum eines Sterns vom Typ M",
+    "spectrum_title0": "O-Typ-Stern",
+    "spectrum_title1": "Stern vom Typ B",
+    "spectrum_title2": "A-Typ-Stern",
+    "spectrum_title3": "F-Typ-Stern",
+    "spectrum_title4": "G-Stern",
+    "spectrum_title5": "Stern vom Typ K",
+    "spectrum_title6": "Stern vom Typ M",
+    "bands_title": "Stellare Spektren",
+    "lambda_lower": "365 nm",
+    "lambda_upper": "900 nm",
+    "bands_filename": "Spektralbänder",
+    "lines_filename": "Spektrallinien"
   },
   "pt-br": {
     "translation_approval_level": "N",
@@ -77,7 +115,7 @@
   },
   "zz": {
     "translation_approval_level": "N",
-    "translation_credit": null,
+    "translation_credit": "Niall Deacon",
     "matplotlib_cairo": false,
     "possible_fonts": [
       "Noto Sans",
