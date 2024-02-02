@@ -7,7 +7,7 @@
       "Noto Sans",
       "Arial"
     ],
-    "xaxis_text": "Wavelength (nm)",
+    "xaxis_text": "Wavelength (nanometers)",
     "yaxis_text": "Flux",
     "spectral_features_title": "Important spectral features",
     "balmer_text": "Hydrogen atoms",
@@ -16,7 +16,6 @@
     "calcium_atoms_text": "Calcium atoms",
     "calcium_ions_text": "Calcium ions",
     "sodium_atoms_text": "Sodium atoms",
-    "iron_atoms_text": "Iron atoms",
     "titanium_oxide_text": "Titanium Oxide",
     "title0": "Spectrum of an O-type star",
     "title1": "Spectrum of a B-type star",
@@ -55,7 +54,6 @@
     "calcium_atoms_text": "Átomos de Cálcio",
     "calcium_ions_text": "íons de Cálcio",
     "sodium_atoms_text": "átomos de Sódio",
-    "iron_atoms_text": "átomos de Ferro",
     "titanium_oxide_text": "óxido de Titânio",
     "title0": "Espectro de uma estrela do tipo O",
     "title1": "Espectro de uma estrela do tipo B",
@@ -77,7 +75,7 @@
     "bands_filename": "bandas espectrais",
     "lines_filename": "linhas espectrais"
   },
-   "zz": {
+  "zz": {
     "translation_approval_level": "N",
     "translation_credit": null,
     "matplotlib_cairo": false,
@@ -85,7 +83,7 @@
       "Noto Sans",
       "Arial"
     ],
-    "xaxis_text": "Wavelength (nm)",
+    "xaxis_text": "Wavelength (nanometers)",
     "yaxis_text": "Flux",
     "spectral_features_title": "Important spectral features",
     "balmer_text": "Hydrogen atoms",
@@ -94,7 +92,6 @@
     "calcium_atoms_text": "Calcium atoms",
     "calcium_ions_text": "Calcium ions",
     "sodium_atoms_text": "Sodium atoms",
-    "iron_atoms_text": "Iron atoms",
     "titanium_oxide_text": "Titanium Oxide",
     "title0": "Spectrum of an O-type star",
     "title1": "Spectrum of a B-type star",
@@ -115,8 +112,5 @@
     "lambda_upper": "900 nm",
     "bands_filename": "spectra bands",
     "lines_filename": "spectra lines"
-  },
-
-  
+  }
 }
-
