@@ -30,8 +30,6 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 <!-- start-translation-credits -->
 
 ## Translation credits
-### Portuguese BR
-Eduardo Monfardini Penteado
 
 <!-- end-translation-credits -->
 
