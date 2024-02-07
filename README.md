@@ -30,6 +30,8 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 <!-- start-translation-credits -->
 
 ## Translation credits
+### Italian
+Niall Deacon
 
 <!-- end-translation-credits -->
 
