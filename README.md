@@ -30,6 +30,10 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 <!-- start-translation-credits -->
 
 ## Translation credits
+### German
+Niall Deacon
+### Portuguese BR
+Eduardo Monfardini Penteado
 
 <!-- end-translation-credits -->
 
@@ -124,15 +128,7 @@ With `zz` replaced by your language code.
 ## Diagram Links
  Below are links to the diagrams produced by this code. You can also find the diagram captions and any translations of these captions in the links.
  <ul>
-<li><a href="http://astro4edu.org/resources/diagram/m5801x5SA50/">Spectrum of an O-type star</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/QF74Q764Tb95/">Spectrum of a B-type star</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/2149RS77wy92/">Spectrum of an A-type star</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/zY580V14PE47/">Spectrum of an F-type star</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/mX21es50Pj16/">Spectrum of a G-type star</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/lH42QC364e69/">Spectrum of a K-type star</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/d156Ob46Ih98/">Spectrum of an M-type star</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/Tt35DR10iI63/">Stellar spectral types</a></li>
-<li><a href="http://astro4edu.org/resources/diagram/W970mQ74LZ29/">Stellar spectral types - bands</a></li>
+<li><a href="http://astro4edu.org/resources/diagram/NE74hZ95Ee34/">Spectrum of an O-type star</a></li>
 </ul>
 
 <!-- end-diagram-links -->
