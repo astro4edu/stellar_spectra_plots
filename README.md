@@ -30,6 +30,8 @@ These plots were generated using Sloan Digital Sky Survey (SDSS) spectroscopic d
 <!-- start-translation-credits -->
 
 ## Translation credits
+### Arabic
+Ali Al-Edhari
 ### Spanish
 Samantha Brown-Sevilla
 ### French
