@@ -38,8 +38,6 @@ Samantha Brown-Sevilla
 Rulx Narcisse
 ### Italian
 Giuliana Giobbi
-### Simplified Chinese
-Niall Deacon
 
 <!-- end-translation-credits -->
 
