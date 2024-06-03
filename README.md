@@ -37,7 +37,7 @@ Samantha Brown-Sevilla
 ### French
 Rulx Narcisse
 ### Italian
-Giuliana Giobbi
+Giuliana Giobbi, Francesco Salvestrini
 
 <!-- end-translation-credits -->
 
