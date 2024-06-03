@@ -161,7 +161,7 @@
   },
   "it": {
     "translation_approval_level": "N",
-    "translation_credit": "Giuliana Giobbi",
+    "translation_credit": "Giuliana Giobbi, Francesco Salvestrini",
     "matplotlib_cairo": false,
     "possible_fonts": [
       "Noto Sans",
@@ -196,7 +196,7 @@
     "lambda_lower": "365 nm",
     "lambda_upper": "900 nm",
     "bands_filename": "bande spettrali",
-    "lines_filename": "linee di spettro"
+    "lines_filename": "righe dello spettro"
   },
   "zz": {
     "translation_approval_level": "N",
