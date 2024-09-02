@@ -38,6 +38,8 @@ Samantha Brown-Sevilla
 Rulx Narcisse
 ### Italian
 Giuliana Giobbi, Francesco Salvestrini
+### Simplified Chinese
+Lin Shijie
 ### Traditional Chinese
 Lin Shijie
 
