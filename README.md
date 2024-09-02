@@ -38,6 +38,8 @@ Samantha Brown-Sevilla
 Rulx Narcisse
 ### Italian
 Giuliana Giobbi, Francesco Salvestrini
+### Traditional Chinese
+Lin Shijie
 
 <!-- end-translation-credits -->
 
